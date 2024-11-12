@@ -1,0 +1,79 @@
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
+C#, OCaml, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+import java.lang.*;
+import java.util.*;
+
+public class Main
+{
+    private static HashMap<String,String>ur=new HashMap<>();
+    private static HashMap<String,Boolean>ls=new HashMap<>();
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		while(sc.hasNextLine()){
+		    String c=sc.nextLine().trim();
+		    String cp[]=c.split(" ");
+		    if(cp[0].equals("register")){
+		        String u=cp[1];
+		        String p=cp[2];
+		        regu(u,p);
+		    }
+		    else if(cp[0].equals("login")){
+		        String u=cp[1];
+		        String p=cp[2];
+		        logu(u,p);
+		    }
+		    else if(cp[0].equals("register")){
+		        String u=cp[1];
+		        String p=cp[2];
+		        logoutu(u,p);
+		    }
+		}
+		
+	}
+	private static void regu(String u,String p){
+	    if(ur.containsKey(u)){
+	        System.out.println("User already reg");
+	    }
+	    else{
+	        ur.put(u,p);
+	        ls.put(u,false);
+	        System.out.println("reg sucessfull");
+	    }
+	}
+	private static void logu(String u,String p){
+	    if(ur.containsKey(u)){
+	        if(ur.get(u).equals(p)){
+	            ls.put(u,true);
+	              System.out.println("login successful");
+	        }
+	        else{
+	        System.out.println("login unsucessfull");
+	    }
+	      
+	    }
+	    else{
+	        System.out.println("login unsucessfull");
+	    }
+	}
+	private static void logoutu(String u,String p){
+	    if(ur.containsKey(u) &&ls.get(u)){
+	        if(ur.get(u).equals(p)){
+	            ls.put(u,false);
+	              System.out.println("logout successful");
+	        }
+	        else{
+	        System.out.println("logout unsucessfull");
+	    }
+	      
+	    }
+	    else{
+	        System.out.println("logout unsucessfull");
+	    }
+	}
+}
